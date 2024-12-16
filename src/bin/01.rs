@@ -18,7 +18,20 @@ pub fn part_one(input: &str) -> Option<u64> {
 pub fn part_two(input: &str) -> Option<u64> {
     let [mut lefts, mut rights] = extract_lefts_and_rights(input);
 
-    None
+    let mut similarity_score = 0;
+
+    for left in &lefts {
+        let mut n_appearance = 0;
+        for right in &rights {
+            if left == right  {
+                n_appearance += 1;
+            }
+        }
+
+        similarity_score += left * n_appearance;
+    }
+
+    Some(similarity_score)
 }
 
 /// Extracts lefts and rights as vectors from input string.
