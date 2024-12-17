@@ -1,8 +1,6 @@
 <img src="./.assets/christmas_ferris.png" width="164">
 
-# 🎄 Advent of Code 2024
-
-Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
+# 🎄 Advent of Code 2024 - JohnTNP
 
 <!--- advent_readme_stars table --->
 ## 2024 Results
@@ -16,7 +14,7 @@ Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.
 
 ---
 
-## Template setup
+## Template by [fspoettel](https://github.com/fspoettel)
 
 This template supports all major OS (macOS, Linux, Windows).
 
