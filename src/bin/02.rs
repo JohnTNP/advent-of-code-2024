@@ -1,9 +1,10 @@
-use std::{fmt::Debug, str::FromStr};
+use std::str::FromStr;
+use advent_of_code::U64Matrix;
 
 advent_of_code::solution!(2);
 
 pub fn part_one(input: &str) -> Option<u64> {
-    let reports: Vec<Vec<u64>> = extract_2d_vectors(input);
+    let reports = U64Matrix::from_str(input).unwrap().data;
 
     let mut safe_reports = 0;
     for levels in &reports {
@@ -16,7 +17,7 @@ pub fn part_one(input: &str) -> Option<u64> {
 }
 
 pub fn part_two(input: &str) -> Option<u64> {
-    let reports: Vec<Vec<u64>> = extract_2d_vectors(input);
+    let reports = U64Matrix::from_str(input).unwrap().data;
 
     let mut safe_reports = 0;
     for levels in &reports {
@@ -34,21 +35,6 @@ pub fn part_two(input: &str) -> Option<u64> {
     }
 
     Some(safe_reports)
-}
-
-fn extract_2d_vectors<T>(input: &str) -> Vec<Vec<T>>
-where
-    T: FromStr + Debug,
-    <T as FromStr>::Err: Debug,
-{
-    input
-        .lines()
-        .map(|row| {
-            row.split_whitespace()
-                .map(|item| item.parse().unwrap())
-                .collect()
-        })
-        .collect()
 }
 
 fn check_level(levels: &Vec<u64>) -> bool {
