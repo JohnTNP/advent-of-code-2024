@@ -1,3 +1,4 @@
+use core::num;
 use std::str::FromStr;
 
 pub mod template;
@@ -21,9 +22,16 @@ impl FromStr for U64Matrix {
     ///
     /// Returns an error if any of the values cannot be parsed as `u64`.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
+
         let data: Result<Vec<Vec<u64>>, _> = s.lines()
             .map(|line| {
-                line.split(',')
+                let parts: Vec<&str> = if line.contains(',') {
+                    line.split(',').collect()
+                } else {
+                    line.split_whitespace().collect()
+                };
+
+                parts.into_iter()
                     .map(|num_str| num_str.trim().parse::<u64>())
                     .collect()
             })
